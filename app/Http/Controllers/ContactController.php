@@ -14,8 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return response()->jason([
-            "message" => "Hello API"
+        return response()->json([
+            'name' => 'Abigail',
+            'state' => 'CA',
         ]);
     }
 
