@@ -18,6 +18,16 @@ class ContactController extends Controller
         return response()->json($contacts);
     }
 
+    public function contactsToArray($contacts)
+    {
+        foreach ($contacts as $contact) {
+            $data['name'] = $contact->name;
+            $data['tel'] = $contact->tel;
+        }
+
+        return $data;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
