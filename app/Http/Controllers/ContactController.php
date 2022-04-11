@@ -20,9 +20,11 @@ class ContactController extends Controller
 
     public function contactsToArray($contacts)
     {
+        $data = [];
+        $i = 0;
         foreach ($contacts as $contact) {
-            $data['name'] = $contact->name;
-            $data['tel'] = $contact->tel;
+            $data[$i]['name'] = $contact->name;
+            $data[$i++]['tel'] = $contact->tel;
         }
 
         return $data;
