@@ -53,10 +53,12 @@ class ContactController extends Controller
             'tel' =>  'required'
         ]);
 
-        Contact::create([
+        $contact = Contact::create([
             'name' => $request->name,
             'tel' => $request->tel
         ]);
+
+        return response()->json($contact);
     }
 
     /**
