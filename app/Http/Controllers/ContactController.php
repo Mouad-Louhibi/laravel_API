@@ -23,6 +23,7 @@ class ContactController extends Controller
         $data = [];
         $i = 0;
         foreach ($contacts as $contact) {
+            $data[$i]['id'] = $contact->id;
             $data[$i]['name'] = $contact->name;
             $data[$i++]['tel'] = $contact->tel;
         }
