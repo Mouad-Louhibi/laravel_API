@@ -114,5 +114,8 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
+        return response()->json([
+            'message' => 'Contact Deleted'
+        ]);
     }
 }
