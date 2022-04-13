@@ -92,7 +92,17 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'tel' =>  'required'
+        ]);
+
+        $contact->update([
+            'name' => $request->name,
+            'tel' => $request->tel
+        ]);
+
+        return response()->json($contact);
     }
 
     /**
