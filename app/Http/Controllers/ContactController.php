@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactCollection;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -15,20 +16,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
-        return response()->json($this->contactsToArray($contacts));
-    }
-
-    public function contactsToArray($contacts)
-    {
-        $data = [];
-        $i = 0;
-        foreach ($contacts as $contact) {
-            $data[$i]['id'] = $contact->id;
-            $data[$i]['name'] = $contact->name;
-            $data[$i++]['tel'] = $contact->tel;
-        }
-
-        return $data;
+        return new ContactCollection($contacts);
     }
 
     /**
