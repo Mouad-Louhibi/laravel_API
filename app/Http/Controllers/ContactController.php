@@ -92,7 +92,7 @@ class ContactController extends Controller
             'tel' => $request->tel
         ]);
 
-        return response()->json($contact);
+        return new ContactResource($contact);
     }
 
     /**
