@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ContactCollection;
+use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class ContactController extends Controller
             'tel' => $request->tel
         ]);
 
-        return response()->json($contact);
+        return new ContactResource($contact);
     }
 
     /**
