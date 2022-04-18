@@ -25,4 +25,16 @@ class UserController extends Controller
 
         return new UserResource($user);
     }
+
+    public function login(Request $request)
+    {
+        $user = User::whereEmail($request->email)->first();
+        if ($user->id) {
+        } else {
+            return response()->json([
+                'message' => 'Invalid Credentials',
+                404
+            ]);
+        }
+    }
 }
