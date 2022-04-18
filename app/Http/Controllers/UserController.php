@@ -34,7 +34,7 @@ class UserController extends Controller
         ]);
 
         $user = User::whereEmail($request->email)->first();
-        if ($user->id) {
+        if (isset($user->id)) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()->json([
@@ -43,14 +43,12 @@ class UserController extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'message' => 'Invalid Credentials',
-                    404
+                    'message' => 'Invalid Credentials'
                 ]);
             }
         } else {
             return response()->json([
-                'message' => 'Invalid Credentials',
-                404
+                'message' => 'Invalid Credentials'
             ]);
         }
     }
