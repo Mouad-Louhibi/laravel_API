@@ -30,6 +30,13 @@ class UserController extends Controller
     {
         $user = User::whereEmail($request->email)->first();
         if ($user->id) {
+            if (Hash::check($request->password, $user->password)) {
+            } else {
+                return response()->json([
+                    'message' => 'Invalid Credentials',
+                    404
+                ]);
+            }
         } else {
             return response()->json([
                 'message' => 'Invalid Credentials',
