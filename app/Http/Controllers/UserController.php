@@ -28,6 +28,11 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'email' =>  'required',
+            'password' => 'required'
+        ]);
+
         $user = User::whereEmail($request->email)->first();
         if ($user->id) {
             if (Hash::check($request->password, $user->password)) {
