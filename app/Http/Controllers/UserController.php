@@ -52,4 +52,8 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function profile(){
+        return new UserResource(auth()->user());
+    }
 }
