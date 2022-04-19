@@ -53,7 +53,16 @@ class UserController extends Controller
         }
     }
 
-    public function profile(){
+    public function profile()
+    {
         return new UserResource(auth()->user());
+    }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'message' => 'Logout Successfully'
+        ]);
     }
 }
