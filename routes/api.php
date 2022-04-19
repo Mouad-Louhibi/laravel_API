@@ -18,6 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/contacts', 'ContactController');
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResource('contacts', 'ContactController');
+});
 Route::post('/register', 'UserController@register');
 Route::post('/login', 'UserController@login');
