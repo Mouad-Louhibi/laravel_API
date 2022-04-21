@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('contacts', 'ContactController');
+    Route::get('/profile/settings', 'UserController@profile'); // Test
     Route::get('/profile', 'UserController@profile');
     Route::get('/logout', 'UserController@logout');
 });
